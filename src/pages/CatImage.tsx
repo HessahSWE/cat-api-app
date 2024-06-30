@@ -13,3 +13,4 @@ const CatImage: React.FC<CatImageProps> = ({ url, width, height }) => (
 );
 
 export default CatImage;
+

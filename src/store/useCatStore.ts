@@ -16,7 +16,7 @@ interface CatState {
   fetchCats: (limit?: number) => Promise<void>;
 }
 
-const useStore = create<CatState>((set) => ({
+const useCatStore = create<CatState>((set) => ({
   cats: [],
   loading: false,
   error: null,
@@ -24,12 +24,11 @@ const useStore = create<CatState>((set) => ({
     set({ loading: true });
     try {
       const response = await axios.get(`https://api.thecatapi.com/v1/images/search?limit=${limit}`);
-      console.log(response);
       set({ cats: response.data, loading: false });
     } catch (error) {
-      set({ error: 'www', loading: false });
+      set({ error: 'Failed to fetch cats', loading: false });
     }
   },
 }));
 
-export default useStore;
+export default useCatStore;

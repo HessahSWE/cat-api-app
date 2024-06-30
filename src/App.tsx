@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import CatList from './components/CatList';
-import './App.css';
+import CatList from './pages/CatList';
 import Home from './components/Home';
 import About from './components/About';
+import './App.css';
 
 const App: React.FC = () => {
   return (
