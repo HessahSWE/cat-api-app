@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './i18n'; // Import the i18n configuration
-import { useLanguageStore } from './store/languageStore';
+import { useLanguageStore } from './store/LanguageStore';
 
 const queryClient = new QueryClient();
 

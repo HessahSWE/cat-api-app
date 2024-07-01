@@ -6,7 +6,7 @@ import Sidebar from './components/Sidebar';
 import { useTranslation } from 'react-i18next';
 import './App.css';
 import CatList from './pages/CatList';
-import { useLanguageStore } from './store/languageStore';
+import { useLanguageStore } from './store/LanguageStore';
 
 const App: React.FC = () => {
   const { t } = useTranslation();

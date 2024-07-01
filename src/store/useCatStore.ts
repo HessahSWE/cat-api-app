@@ -1,6 +1,6 @@
 import create from 'zustand';
-import axios from 'axios';
-import { CatState } from '../types/Cat';
+import fetchCats from '../services/api/CatAPI';
+import { CatState } from '../types/CatState';
 
 const useCatStore = create<CatState>((set) => ({
   cats: [],
@@ -9,8 +9,8 @@ const useCatStore = create<CatState>((set) => ({
   fetchCats: async (limit = 10) => {
     set({ loading: true });
     try {
-      const response = await axios.get(`https://api.thecatapi.com/v1/images/search?limit=${limit}`);
-      set({ cats: response.data, loading: false });
+      const data = await fetchCats(limit);
+      set({ cats: data, loading: false });
     } catch (error) {
       set({ error: 'Failed to fetch cats', loading: false });
     }

@@ -1,10 +1,6 @@
 import React from 'react';
+import { CatImageProps } from '../types/CatImageProps';
 
-interface CatImageProps {
-  url: string;
-  width: number;
-  height: number;
-}
 
 const CatImage: React.FC<CatImageProps> = ({ url, width, height }) => (
   <div className="m-4">
@@ -13,4 +9,3 @@ const CatImage: React.FC<CatImageProps> = ({ url, width, height }) => (
 );
 
 export default CatImage;
-
