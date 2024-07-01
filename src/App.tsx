@@ -1,36 +1,37 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
-import LanguageSwitcher from './components/LanguageSwitcher';
+import Sidebar from './components/Sidebar';
 import { useTranslation } from 'react-i18next';
 import './App.css';
 import CatList from './pages/CatList';
+import { useLanguageStore } from './store/languageStore';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
+  const { direction } = useLanguageStore();
+
+  React.useEffect(() => {
+    document.documentElement.dir = direction;
+  }, [direction]);
 
   return (
     <Router>
-      <div className="App">
-        <header className="bg-blue-600 p-4 text-white text-center">
-          <h1>{t('welcome')}</h1>
-          <nav>
-            <ul className="flex justify-center space-x-4">
-              <li><Link to="/" className="text-white">{t('home')}</Link></li>
-              <li><Link to="/about" className="text-white">{t('about')}</Link></li>
-              <li><Link to="/cats" className="text-white">{t('cats')}</Link></li>
-            </ul>
-          </nav>
-          <LanguageSwitcher />
-        </header>
-        <main className="p-4">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/cats" element={<CatList />} />
-          </Routes>
-        </main>
+      <div className={`App flex ${direction === 'rtl' ? 'rtl' : 'ltr'}`}>
+        <Sidebar />
+        <div className={`flex-1 p-4 ${direction === 'rtl' ? 'mr-64' : 'ml-64'}`}>
+          <header className="bg-blue-600 p-4 text-white text-center rounded-lg shadow-md">
+            <h1 className="text-2xl font-bold">{t('welcome')}</h1>
+          </header>
+          <main className="mt-4 p-4 bg-white rounded-lg shadow-md">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/cats" element={<CatList />} />
+            </Routes>
+          </main>
+        </div>
       </div>
     </Router>
   );

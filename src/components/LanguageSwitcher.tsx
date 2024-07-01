@@ -1,18 +1,26 @@
+// src/components/LanguageSwitcher.tsx
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLanguageStore } from '../store/languageStore';
 
 const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
+  const { language, setLanguage } = useLanguageStore();
 
   const changeLanguage = (lng: string) => {
+    const direction = lng === 'ar' ? 'rtl' : 'ltr';
     i18n.changeLanguage(lng);
+    setLanguage(lng, direction);
+    document.documentElement.dir = direction;
   };
 
   return (
-    <div className="flex justify-center space-x-4">
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('ar')}>العربية</button>
-    </div>
+    <button
+      onClick={() => changeLanguage(language === 'en' ? 'ar' : 'en')}
+      className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+    >
+      {language === 'en' ? 'English' : 'العربية'}
+    </button>
   );
 };
 
