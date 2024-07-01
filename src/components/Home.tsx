@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <h1>Home Page</h1>
-      <p>Welcome to the home page.</p>
+      <h1>{t('home')}</h1>
+      <p>{t('homePage')}</p>
     </div>
   );
 };

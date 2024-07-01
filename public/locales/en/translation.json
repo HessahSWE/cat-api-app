@@ -1,0 +1,10 @@
+{
+    "welcome": "Welcome to the CatAPI - Documentation Portal",
+    "home": "Home",
+    "about": "About",
+    "cats": "Cats",
+    "loading": "Loading...",
+    "error": "Error:",
+    "homePage": "Welcome to the home page.",
+    "aboutPage": "This is the about page."
+}
