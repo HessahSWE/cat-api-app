@@ -1,20 +1,6 @@
 import create from 'zustand';
 import axios from 'axios';
-
-interface Cat {
-  id: string;
-  url: string;
-  width: number;
-  height: number;
-  breeds: Array<object>;
-}
-
-interface CatState {
-  cats: Cat[];
-  loading: boolean;
-  error: string | null;
-  fetchCats: (limit?: number) => Promise<void>;
-}
+import { CatState } from '../types/Cat';
 
 const useCatStore = create<CatState>((set) => ({
   cats: [],
