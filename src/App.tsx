@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
+import Home from './pages/Home';
+import About from './pages/About';
 import Sidebar from './components/Sidebar';
 import { useTranslation } from 'react-i18next';
 import './App.css';
